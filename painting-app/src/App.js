@@ -1,18 +1,19 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Navbar from './Navbar.js'
-import Canvas from './Canvas.js'
-// import LeftSideBox from './containers/LeftSideBox';
-import Sidenav from './components/Sidenav';
+import Canvas from './components/Canvas.js'
+import SuperContainer from './containers/SuperContainer.js'
 
-function App() {
+export default class App extends React.Component{
 
-  return (
+  render(){
+    return (
     <div className="App">
       
-      <Sidenav /> 
+     <Canvas />
     </div>
   );
+  }
 }
 
-export default App;
+
