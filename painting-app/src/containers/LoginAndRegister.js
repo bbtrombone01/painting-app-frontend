@@ -16,14 +16,14 @@ export default class LoginAndRegister extends React.Component {
             }
         })
     }
-
+    
     render() {
         return(
             <div>
                 <div>
                     <h1>Welcome to our App!</h1>
                 </div>
-            {this.state.toggle === false ? <Login toggle={this.state.toggle} showRegisterForm={this.showRegisterForm} /> : <SignUpForm /> }
+            {this.state.toggle === false ? <Login showRegisterForm={this.showRegisterForm} /> : <SignUpForm showRegisterForm={this.showRegisterForm} /> }
             </div> 
         )
     }

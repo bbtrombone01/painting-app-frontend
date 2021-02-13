@@ -2,22 +2,65 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class Login extends React.Component {
+
+    state = {
+        user: {
+            username: "", 
+            password: ""
+        }
+    }
+
+    handleChangeUsername = (e) => {
+        this.setState({
+            user: {
+                ...this.state.user, 
+                username: e.target.value
+            }
+        })
+    }
+
+    handleChangePassword = (e) => {
+        this.setState({
+            user: {
+                ...this.state.user, 
+                password: e.target.value
+            }
+        })
+    }
+
+    handleLogin = (e) => {
+        // need to figure out how to pass the token or be able to grab it from the backend 
+        e.preventDefault() 
+        let login_user = this.state.user 
+        fetch('http://localhost:3000/login', {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${login_user}`
+            }, 
+        })
+        .then(resp => resp.json())
+        .then(test => console.log(test))
+
+    }
+
     render() {
         return (
             <div className="form-container"> 
-            <form>
+            <form onSubmit={(e) => this.handleLogin(e)}>
                 <h3>Please Sign In</h3>
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="username" className="form-control" placeholder="Enter Username" />
+                    <input onChange={(e) => this.handleChangeUsername(e)} type="username" className="form-control" placeholder="Enter Username" />
                 </div>
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input onChange={(e) => this.handleChangePassword(e)} type="password" className="form-control" placeholder="Enter password" />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">Submit</button>
-                <button  onClick={this.props.showRegisterForm} className="btn btn-primary btn-block">Create an Account?</button>
+                <button type="submit" className="btn btn-primary btn-block">Log In</button>
+                
             </form>
+
+            <button  onClick={this.props.showRegisterForm} className="btn btn-primary btn-block">Create an Account?</button>
             </div>
         );
     }
