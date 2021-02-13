@@ -1,8 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
 import Canvas from './components/Canvas.js'
 import SuperContainer from './containers/SuperContainer.js'
+import Navbar from './containers/Navbar.js'
+import Login from './components/Login.js'
+import LoginAndRegister from './containers/LoginAndRegister.js'
 
 export default class App extends React.Component{
 
@@ -10,7 +12,7 @@ export default class App extends React.Component{
     return (
     <div className="App">
       
-     <Canvas />
+     <LoginAndRegister /> 
     </div>
   );
   }
