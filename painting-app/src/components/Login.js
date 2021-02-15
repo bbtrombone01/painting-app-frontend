@@ -3,44 +3,68 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class Login extends React.Component {
 
+    // state = {
+    //     user: {
+    //         username: "", 
+    //         password: ""
+    //     }
+    // }
+
+    // handleChangeUsername = (e) => {
+    //     this.setState({
+    //         user: {
+    //             ...this.state.user, 
+    //             username: e.target.value
+    //         }
+    //     })
+    // }
+
+    // handleChangePassword = (e) => {
+    //     this.setState({
+    //         user: {
+    //             ...this.state.user, 
+    //             password: e.target.value
+    //         }
+    //     })
+    // }
+
+
     state = {
-        user: {
             username: "", 
             password: ""
-        }
     }
 
     handleChangeUsername = (e) => {
         this.setState({
-            user: {
-                ...this.state.user, 
-                username: e.target.value
-            }
+           username: e.target.value
         })
     }
 
     handleChangePassword = (e) => {
         this.setState({
-            user: {
-                ...this.state.user, 
-                password: e.target.value
-            }
+            password: e.target.value
         })
     }
 
     handleLogin = (e) => {
         // need to figure out how to pass the token or be able to grab it from the backend 
         e.preventDefault() 
-        let login_user = this.state.user 
+        //let login_user = this.state.user 
         fetch('http://localhost:3000/login', {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${login_user}`
+                'Content-Type': 'application/json',
+                
             }, 
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password
+
+            })
         })
         .then(resp => resp.json())
-        .then(test => console.log(test))
-
+        // Able to grab token from loggedInUser.jwt and can set it to state or sessionStorage
+        .then(loggedInUser => console.log(loggedInUser.jwt, loggedInUser.user.username))
     }
 
     render() {

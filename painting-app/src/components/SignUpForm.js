@@ -48,7 +48,6 @@ export default class SignUpForm extends Component {
             body: JSON.stringify(newUser)
         })
         .then(resp => resp.json())
-        //.then(registeredUser => sessionStorage.setItem('token', registeredUser.token))
         .then(registeredUser => console.log(registeredUser))
     }
     render() {
