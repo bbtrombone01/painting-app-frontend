@@ -10,28 +10,12 @@ export default class Canvas extends React.Component {
     render() {
 
         Painterro({
-          //   saveHandler: function (image, done) {
-          //     var formData = new FormData();
-          //     formData.append("image", image.asBlob());
-          //     formData.append("user_id", 2)
-          //     formData.append("topic_id", 2)
-          //     // you can also pass suggested filename 
-          //     // formData.append('image', image.asBlob(), image.suggestedFileName());
-          //     var xhr = new XMLHttpRequest();
-          //     xhr.open('POST', 'http://127.0.0.1:3000/paintings', true);
-          //     xhr.onload = xhr.onerror = function () {
-          //       done(true);
-          //     };
-          //     xhr.send(formData);
-          //   }
-          // }).show()
+          hiddenTools: ['crop', 'close', 'settings', 'resize'],
           saveHandler: function (image, done) {
             var formData = new FormData();
             formData.append("image", image.asBlob(), image.suggestedFileName());
             formData.append("user_id", 2)
             formData.append("topic_id", 2)
-            // you can also pass suggested filename 
-            // formData.append('image', image.asBlob(), image.suggestedFileName());
             fetch('http://127.0.0.1:3000/paintings', {
               method: 'POST',
               body: formData
@@ -43,12 +27,14 @@ export default class Canvas extends React.Component {
             .catch((error) => {
               console.error('Error:', error);
             });
-          }
+          }, 
+    
         }).show()
 
         return (
-            <div> 
-            {Painterro}
+            <div id='canvas'>
+              {Painterro} 
+           
             </div>
         )
     }
