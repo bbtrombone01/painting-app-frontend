@@ -21,7 +21,9 @@ export default class Navbar extends React.Component {
 
     render () {
         return (
-            <div>Hello World</div>
+            <div>
+                <a href="#about">About</a>
+            </div>
         )
     }
 }
