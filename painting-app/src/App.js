@@ -10,12 +10,26 @@ import LoginAndRegister from './containers/LoginAndRegister.js'
 
 export default class App extends React.Component{
 
+  state = {
+    userSession: false
+}
+
+handleUserSession = (token) => {
+  this.setState({
+    userSession: true
+  })
+  sessionStorage.setItem('token', token)
+}
+
   render(){
     return (
     <div className="App">
       
-     {/* <SuperContainer /> */}
-     <LoginAndRegister /> 
+     {/* how to toggle on the SuperContainer after a user logs in? */}
+     
+     {/* {sessionStorage.getItem('token') == null ? <LoginAndRegister handleUserSession={this.handleUserSession} /> : <SuperContainer />}  */}
+
+     {this.state.userSession === true? <SuperContainer /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> } 
     </div>
   );
   }

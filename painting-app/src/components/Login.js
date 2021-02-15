@@ -63,8 +63,7 @@ export default class Login extends React.Component {
             })
         })
         .then(resp => resp.json())
-        // Able to grab token from loggedInUser.jwt and can set it to state or sessionStorage
-        .then(loggedInUser => console.log(loggedInUser.jwt, loggedInUser.user.username))
+        .then(user => this.props.handleUserSession(user.jwt)) 
     }
 
     render() {
