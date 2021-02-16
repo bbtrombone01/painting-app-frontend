@@ -47,9 +47,7 @@ export default class Login extends React.Component {
     }
 
     handleLogin = (e) => {
-        // need to figure out how to pass the token or be able to grab it from the backend 
         e.preventDefault() 
-        //let login_user = this.state.user 
         fetch('http://localhost:3000/login', {
             method: "POST",
             headers: {
@@ -63,7 +61,7 @@ export default class Login extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(user => this.props.handleUserSession(user.jwt)) 
+        .then(user => this.props.handleUserSession(user)) 
     }
 
     render() {

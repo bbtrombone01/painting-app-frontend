@@ -11,14 +11,17 @@ import LoginAndRegister from './containers/LoginAndRegister.js'
 export default class App extends React.Component{
 
   state = {
+    userData: {},
     userSession: false
 }
 
-handleUserSession = (token) => {
+handleUserSession = (user) => {
   this.setState({
+    userData: user,
     userSession: true
   })
-  sessionStorage.setItem('token', token)
+// think about building out a ternary so you can use this to log users out as well 
+  sessionStorage.setItem('token', user.jwt)
 }
 
   render(){
@@ -29,7 +32,7 @@ handleUserSession = (token) => {
      
      {/* {sessionStorage.getItem('token') == null ? <LoginAndRegister handleUserSession={this.handleUserSession} /> : <SuperContainer />}  */}
 
-     {this.state.userSession === true? <SuperContainer /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> } 
+     {this.state.userSession === true ? <SuperContainer /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> } 
     </div>
   );
   }
