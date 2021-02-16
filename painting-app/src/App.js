@@ -11,28 +11,39 @@ import LoginAndRegister from './containers/LoginAndRegister.js'
 export default class App extends React.Component{
 
   state = {
-    userData: {},
-    userSession: false
+    userData: null,
 }
 
+// this is to grab the same user each time the page refreshes so they don't have to re login
+componentDidMount() {
+  let token = sessionStorage.getItem('token')
+  if (token) {
+    fetch('http://localhost:3000/profile', {
+      method: "GET",
+      headers: {
+        Authorization: `bearer ${token}`,
+      }, 
+    })
+    .then(resp => resp.json())
+    .then(user => this.setState({
+      userData: user.user
+    }))
+  }
+}
+
+// if you're using sessionStorage as a conditional in the render, have to set it before setting state to get it to be truthy and re render after state updates.
 handleUserSession = (user) => {
+  sessionStorage.setItem('token', user.jwt)
   this.setState({
     userData: user,
-    userSession: true
   })
-// think about building out a ternary so you can use this to log users out as well 
-  sessionStorage.setItem('token', user.jwt)
 }
 
   render(){
+    console.log(sessionStorage.getItem('token'))
     return (
     <div className="App">
-      
-     {/* how to toggle on the SuperContainer after a user logs in? */}
-     
-     {/* {sessionStorage.getItem('token') == null ? <LoginAndRegister handleUserSession={this.handleUserSession} /> : <SuperContainer />}  */}
-
-     {this.state.userSession === true ? <SuperContainer /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> } 
+     {sessionStorage.getItem('token') !== null ? <SuperContainer /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> }    
     </div>
   );
   }
