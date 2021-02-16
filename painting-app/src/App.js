@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Navbar from './containers/Navbar.js'
 import Login from './components/Login.js'
 import LoginAndRegister from './containers/LoginAndRegister.js'
+import {Route} from 'react-router-dom'
 
 
 export default class App extends React.Component{
@@ -14,8 +15,8 @@ export default class App extends React.Component{
     return (
     <div className="App">
       
-     {/* <SuperContainer /> */}
-     <LoginAndRegister /> 
+     <SuperContainer />
+     {/* <LoginAndRegister />  */}
     </div>
   );
   }

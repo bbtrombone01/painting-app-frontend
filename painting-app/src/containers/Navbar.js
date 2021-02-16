@@ -1,4 +1,5 @@
 import React from 'react' 
+import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class Navbar extends React.Component {
@@ -23,7 +24,12 @@ export default class Navbar extends React.Component {
     render () {
         return (
             <div>
-                <a href="#about">About</a>
+                <Link to='/paintings/new' className='ui-button'>
+                Create New Painting
+                </Link>
+                <Link to='/profile' className='ui-button'>
+                    Profile
+                </Link>
             </div>
         )
     }
