@@ -47,24 +47,19 @@ export default class Login extends React.Component {
     }
 
     handleLogin = (e) => {
-        // need to figure out how to pass the token or be able to grab it from the backend 
         e.preventDefault() 
-        //let login_user = this.state.user 
         fetch('http://localhost:3000/login', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                
+                'Content-Type': 'application/json',           
             }, 
             body: JSON.stringify({
                 username: this.state.username,
                 password: this.state.password
-
             })
         })
         .then(resp => resp.json())
-        // Able to grab token from loggedInUser.jwt and can set it to state or sessionStorage
-        .then(loggedInUser => console.log(loggedInUser.jwt, loggedInUser.user.username))
+        .then(user => this.props.handleUserSession(user)) 
     }
 
     render() {
