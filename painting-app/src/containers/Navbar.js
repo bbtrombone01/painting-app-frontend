@@ -28,7 +28,7 @@ export default class Navbar extends React.Component {
                 Create New Painting
                 </Link>
                 <Link to='/profile' className='ui-button'>
-                    Profile
+                    Edit Profile
                 </Link>
                 <Link to='/gallery' className='ui-button'>
                 All Paintings Gallery

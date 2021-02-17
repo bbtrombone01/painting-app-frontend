@@ -5,8 +5,8 @@ export default class Profile extends React.Component {
 
     state = {
        user: {
-           username: "",
-            tagline: ""
+           username: this.props.userData.username,
+            tagline: this.props.userData.tagline
        }
     }
 
@@ -26,57 +26,47 @@ export default class Profile extends React.Component {
                 tagline: e.target.value
             }
         })
-    }
+    } 
 
-    handleUpdate = (e) => {
+    updateUser = (e) => {
         e.preventDefault() 
-        let updatedUser = this.state.user 
-        //this.props.updateUser(updatedUser) 
-    }
+        let updatedUser = this.state.user
+        let token = sessionStorage.getItem('token')
+            fetch(`http://localhost:3000/users/${this.props.userData.id}`, {
+                method: "PATCH",
+                headers: {
+                  Authorization: `bearer ${token}`,
+                  "Content-Type": "application/json"           
+                }, 
+                body: JSON.stringify(updatedUser)
+            })
+            .then(resp => resp.json())
+            .then(updated => alert("You've successfully updated your profile!"))
+        }
 
-    // handleUpdate =(e) => {
-
-    //     e.preventDefault()
-    //     let user_token = sessionStorage.getItem('token')
-    //     fetch(`http://localhost:3000/users/${this.props.userData.id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             Authorization: `bearer ${user_token}`,           
-    //         }, 
-    //         body: JSON.stringify({
-    //             username: this.state.username,
-    //             tagline: this.state.tagline
-    //         })
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(updated => console.log(updated))
-    // }
 
     render() {
+        
         return(
             <div>
                 
             <h2>This is your profile</h2>
-            {/* <h3>{this.props.userData.username}</h3> 
-            <h3>{this.props.userData.tagline}</h3>  */}
             <div>
-            <form onSubmit={(e) => this.handleUpdate(e)}>
+            <form onSubmit={(e) => this.updateUser(e)}>
                 <div className="form-group">
                     <label>Username</label>
-                    <input onChange={(e) => this.handleChangeUsername(e)} type="text" className="form-control" placeholder={this.props.userData} />
+                    <input onChange={(e) => this.handleChangeUsername(e)} type="text" className="form-control" defaultValue={this.props.userData.username} />
                 </div>
 
                 <div className="form-group">
                     <label>Tag Line</label>
-                    <input onChange={(e) => this.handleChangeTagline(e)} type="tag" className="form-control" placeholder={this.props.userData} />
+                    <input onChange={(e) => this.handleChangeTagline(e)} type="tag" className="form-control" defaultValue={this.props.userData.tagline} />
                 </div>
-
                 <button type="submit" className="btn btn-primary btn-block">Update Profile</button>
-                
             </form>
             
             </div> 
-            
+                <button onClick={() => this.props.deleteUser()} className="btn btn-primary btn-block">Delete Account?</button>
             </div>
         )
     }
