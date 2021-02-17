@@ -23,6 +23,7 @@ export default class Topics extends React.Component {
         return <form onSubmit={(e) => this.handleSubmit(e)}>
                 <label for="topics">Choose a Topic for Your Painting!</label><br></br>
                 <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
+                    <option value='blank'></option>
                     {this.props.allTopics.map(t => {
                     return <option value={`${t.id}`}>{t.topic}</option>
                     })}
@@ -33,7 +34,7 @@ export default class Topics extends React.Component {
     }
 
     renderCanvas = () => {
-        return <Canvas topicID={this.state.topicID} userData={this.props.userData}/>
+        return <Canvas topicID={this.state.topicID} userData={this.props.userData} addNewPainting={this.props.addNewPainting}/>
     }
 
     handleSubmit = (e) => {

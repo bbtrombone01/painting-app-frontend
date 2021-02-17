@@ -10,8 +10,8 @@ export default class Canvas extends React.Component {
     super(props)
 
     const userID = this.props.userData.id
-    // const topicID = parseInt(this.props.topicID)
     const topicID = this.props.topicID
+    console.log(topicID)
     const PTRO = Painterro({
       hiddenTools: ['crop', 'close', 'settings', 'resize'],
       saveHandler: function (image, done) {
@@ -24,22 +24,24 @@ export default class Canvas extends React.Component {
           body: formData
         })
         .then(response => response.json())
-        .then(data => {
-          console.log('Success:', data);
-        
-        })
+        .then(console.log)
         .catch((error) => {
           console.error('Error:', error);
         });
       }, 
 
     })
-    this.state = {ptro: PTRO}
+    this.state = {
+      ptro: PTRO
+    }
   }
 
   componentWillUnmount() {
+    this.props.addNewPainting()
     this.state.ptro.hide()
+    
   }
+
 
     render() {
        
