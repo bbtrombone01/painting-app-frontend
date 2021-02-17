@@ -56,7 +56,6 @@ handleUserSession = (user) => {
   render(){
     return (
     <div className="App">
-
      {sessionStorage.getItem('token') !== null ? <SuperContainer userData={this.state.userData} updateUser={this.updateUser} /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> }    
     </div>
   );

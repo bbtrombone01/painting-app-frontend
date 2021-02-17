@@ -2,17 +2,22 @@ import React from 'react'
 import { Painterro } from 'painterro' 
 
 
+ 
 
 export default class Canvas extends React.Component {
-  state = {
-    showCanvas: true,
-    ptro: Painterro({
+  
+  constructor(props){
+    super(props)
+
+    const userID = this.props.userData.user.id
+    const topicID = parseInt(this.props.topicID)
+    const PTRO = Painterro({
       hiddenTools: ['crop', 'close', 'settings', 'resize'],
       saveHandler: function (image, done) {
         var formData = new FormData();
         formData.append("image", image.asBlob(), image.suggestedFileName());
-        formData.append("user_id", 2)
-        formData.append("topic_id", 2)
+        formData.append("user_id", userID)
+        formData.append("topic_id", topicID)
         fetch('http://127.0.0.1:3000/paintings', {
           method: 'POST',
           body: formData
@@ -20,6 +25,7 @@ export default class Canvas extends React.Component {
         .then(response => response.json())
         .then(data => {
           console.log('Success:', data);
+        
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -27,59 +33,22 @@ export default class Canvas extends React.Component {
       }, 
 
     })
-  }
-
-  hideCanvas = () => {
-    this.setState({
-      showCanvas: false
-    })
-  }
-
-
-  chooseCanvasShow = (ptro) => {
-   return  this.state.showCanvas ? ptro.show() : ptro.hide()
+    this.state = {ptro: PTRO}
   }
 
   componentWillUnmount() {
     this.state.ptro.hide()
   }
 
-  
-    
-//in render need to dynamically add user and topic id - right now just hardcoded to 2 for both
     render() {
-      
-
-      //  let ptro = Painterro({
-      //     hiddenTools: ['crop', 'close', 'settings', 'resize'],
-      //     saveHandler: function (image, done) {
-      //       var formData = new FormData();
-      //       formData.append("image", image.asBlob(), image.suggestedFileName());
-      //       formData.append("user_id", 2)
-      //       formData.append("topic_id", 2)
-      //       fetch('http://127.0.0.1:3000/paintings', {
-      //         method: 'POST',
-      //         body: formData
-      //       })
-      //       .then(response => response.json())
-      //       .then(data => {
-      //         console.log('Success:', data);
-      //       })
-      //       .catch((error) => {
-      //         console.error('Error:', error);
-      //       });
-      //     }, 
-    
-      //   })
-  
-        this.state.ptro.show()
-        // debugger
+       
+      this.state.ptro.show()
         
-        return (
-            <div id='canvas'>
+      return (
+        <div id='canvas'>
               
            
-            </div>
-        )
+        </div>
+      )
     }
 }
