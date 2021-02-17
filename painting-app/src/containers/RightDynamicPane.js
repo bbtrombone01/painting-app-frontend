@@ -25,6 +25,17 @@ export default class RightDynamicPane extends React.Component{
                 allTopics: topics
             })
         })
+
+        fetch('http://127.0.0.1:3000/paintings', {
+            method: "GET",
+            headers: {
+              Authorization: `bearer ${token}`,
+            }
+        })
+        .then(resp => resp.json())
+        .then(console.log)
+        
+ 
     }
     render(){
       return (
