@@ -26,24 +26,27 @@ componentDidMount() {
       }, 
     })
     .then(resp => resp.json())
-    .then(user => this.setState({
+    .then(user => {
+      console.log(user)
+      this.setState({
       userData: user.user
-    }))
+    })}
+    )
   }
 }
 
-updateUser = (updates) => {
+// updateUser = (updates) => {
 
-      fetch(`http://localhost:3000/users/${this.state.userData.id}`, {
-          method: "PATCH",
-          headers: {
-              "Content-Type": "application/json",           
-          }, 
-          body: JSON.stringify(updates)
-      })
-      .then(resp => resp.json())
-      .then(updated => alert("You've successfully updated your profile!"))
-  }
+//       fetch(`http://localhost:3000/users/${this.state.userData.id}`, {
+//           method: "PATCH",
+//           headers: {
+//               "Content-Type": "application/json",           
+//           }, 
+//           body: JSON.stringify(updates)
+//       })
+//       .then(resp => resp.json())
+//       .then(updated => alert("You've successfully updated your profile!"))
+//   }
 
 // if you're using sessionStorage as a conditional in the render, have to set it before setting state to get it to be truthy and re render after state updates.
 handleUserSession = (user) => {

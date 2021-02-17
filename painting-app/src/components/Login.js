@@ -59,9 +59,8 @@ export default class Login extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(user => { 
-            console.log(user)
-            this.props.handleUserSession(user)})
+        .then(user => {
+            user.message === "Invalid username or password" ? alert("Invalid username or password") : this.props.handleUserSession(user)})
     }
 
     render() {

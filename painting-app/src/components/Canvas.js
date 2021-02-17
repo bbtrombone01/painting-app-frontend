@@ -9,8 +9,9 @@ export default class Canvas extends React.Component {
   constructor(props){
     super(props)
 
-    const userID = this.props.userData.user.id
-    const topicID = parseInt(this.props.topicID)
+    const userID = this.props.userData.id
+    // const topicID = parseInt(this.props.topicID)
+    const topicID = this.props.topicID
     const PTRO = Painterro({
       hiddenTools: ['crop', 'close', 'settings', 'resize'],
       saveHandler: function (image, done) {

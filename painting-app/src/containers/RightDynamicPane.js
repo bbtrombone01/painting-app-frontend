@@ -21,6 +21,7 @@ export default class RightDynamicPane extends React.Component{
         })
         .then(resp => resp.json())
         .then(topics => {
+          console.log(topics)
             this.setState({
                 allTopics: topics
             })

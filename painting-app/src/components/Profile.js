@@ -31,7 +31,7 @@ export default class Profile extends React.Component {
     handleUpdate = (e) => {
         e.preventDefault() 
         let updatedUser = this.state.user 
-        this.props.updateUser(updatedUser) 
+        //this.props.updateUser(updatedUser) 
     }
 
     // handleUpdate =(e) => {
