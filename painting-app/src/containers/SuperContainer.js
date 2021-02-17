@@ -12,7 +12,7 @@ export default class SuperContainer extends React.Component {
         <div className="super_container">
         <h1>Fun title aligned to the left</h1>
         <LeftSideBox />
-        <RightDynamicPane userData={this.props.userData} updateUser={this.props.updateUser} />
+        <RightDynamicPane deleteUser={this.props.deleteUser} userData={this.props.userData} />
         </div>
     );
     }

@@ -21,7 +21,6 @@ export default class RightDynamicPane extends React.Component{
         })
         .then(resp => resp.json())
         .then(topics => {
-          console.log(topics)
             this.setState({
                 allTopics: topics
             })
@@ -31,7 +30,7 @@ export default class RightDynamicPane extends React.Component{
       return (
       <div  id="right-pane" className="right-dynamic-pane">
         <Route exact path="/profile" render={() => {
-          return <Profile userData={this.props.userData} updateUser={this.props.updateUser} /> 
+          return <Profile userData={this.props.userData} deleteUser={this.props.deleteUser} /> 
         }} />
         <Route exact path="/paintings/new" render={() => {
             return <Topics userData={this.props.userData} allTopics={this.state.allTopics}/>}

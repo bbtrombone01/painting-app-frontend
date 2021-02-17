@@ -3,32 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default class Login extends React.Component {
 
-    // state = {
-    //     user: {
-    //         username: "", 
-    //         password: ""
-    //     }
-    // }
-
-    // handleChangeUsername = (e) => {
-    //     this.setState({
-    //         user: {
-    //             ...this.state.user, 
-    //             username: e.target.value
-    //         }
-    //     })
-    // }
-
-    // handleChangePassword = (e) => {
-    //     this.setState({
-    //         user: {
-    //             ...this.state.user, 
-    //             password: e.target.value
-    //         }
-    //     })
-    // }
-
-
     state = {
             username: "", 
             password: ""
