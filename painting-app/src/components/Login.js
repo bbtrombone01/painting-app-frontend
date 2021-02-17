@@ -59,7 +59,9 @@ export default class Login extends React.Component {
             })
         })
         .then(resp => resp.json())
-        .then(user => this.props.handleUserSession(user)) 
+        .then(user => { 
+            console.log(user)
+            this.props.handleUserSession(user)})
     }
 
     render() {

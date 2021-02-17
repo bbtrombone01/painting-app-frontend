@@ -12,7 +12,9 @@ export default class RightDynamicPane extends React.Component{
       return (
       <div  id="right-pane" className="right-dynamic-pane">
         <Route exact path="/paintings/new" component={Topics}/>
-        <Route exact path="/profile" component={Profile}/>
+        <Route exact path="/profile" render={() => {
+          return <Profile userData={this.props.userData} updateUser={this.props.updateUser} /> 
+        }} />
        {/* <Canvas /> */}
       </div>
     );
