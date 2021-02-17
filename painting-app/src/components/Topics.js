@@ -8,20 +8,23 @@ const availTopics = ["happy", "sad", "confused", "excited"]
 
 export default class Topics extends React.Component {
     state = {
-        topic: "",
-        topicSelected: false
+        topicID: "",
+        topicSelected: false,
+        allTopics: this.props.allTopics
     }
     
     componentDidMount(){
         this.setState({topicSelected: false})
+        
     }
 
     renderForm = () => {
+        
         return <form onSubmit={(e) => this.handleSubmit(e)}>
                 <label for="topics">Choose a Topic for Your Painting!</label><br></br>
                 <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
-                    {availTopics.map(t => {
-                    return <option value={`${t}`}>{t}</option>
+                    {this.props.allTopics.map(t => {
+                    return <option value={`${t.id}`}>{t.topic}</option>
                     })}
                 </select>
                  
@@ -30,7 +33,7 @@ export default class Topics extends React.Component {
     }
 
     renderCanvas = () => {
-        return <Canvas topic={this.state.topic}/>
+        return <Canvas topicID={this.state.topicID} userData={this.props.userData}/>
     }
 
     handleSubmit = (e) => {
@@ -41,8 +44,8 @@ export default class Topics extends React.Component {
     }
     
     handleChange = (e) => {
-        // console.log(e.target.value)
-        this.setState({topic: e.target.value})
+        console.log(e.target.value)
+        this.setState({topicID: e.target.value})
     }
 
 
@@ -51,17 +54,6 @@ export default class Topics extends React.Component {
         return(
             <div>
                 {!this.state.topicSelected? this.renderForm() : this.renderCanvas()}
-            {/* <form onSubmit={(e) => this.handleSubmit(e)}>
-                <label for="topics">Choose a Topic for Your Painting!</label><br></br>
-                <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
-                    {availTopics.map(t => {
-                    return <option value={`${t}`}>{t}</option>
-                    })}
-                </select>
-                 
-                <button type="submit" value="Submit">Submit </button>
-            </form>
-            <Canvas /> */}
             </div>
         )
     }

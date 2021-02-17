@@ -7,13 +7,32 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route} from 'react-router-dom'
 
 export default class RightDynamicPane extends React.Component{
+   state = {
+       allTopics: []
+   }
 
+    componentDidMount(){ 
+        let token = sessionStorage.getItem('token')
+        fetch('http://127.0.0.1:3000/topics', {
+            method: "GET",
+            headers: {
+              Authorization: `bearer ${token}`,
+            }
+        })
+        .then(resp => resp.json())
+        .then(topics => {
+            this.setState({
+                allTopics: topics
+            })
+        })
+    }
     render(){
       return (
       <div  id="right-pane" className="right-dynamic-pane">
-        <Route exact path="/paintings/new" component={Topics}/>
+        <Route exact path="/paintings/new" render={() => {
+            return <Topics userData={this.props.userData} allTopics={this.state.allTopics}/>}
+        }/>
         <Route exact path="/profile" component={Profile}/>
-       {/* <Canvas /> */}
       </div>
     );
     }
