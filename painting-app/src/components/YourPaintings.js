@@ -17,8 +17,9 @@ export default class YourPaintings extends React.Component {
             <Container fluid>
                 <Row>
                     {this.props.yourPaintings.map(p => {
-                        return <Col lg={3} md={2}>
-                                <Image src={`http://localhost:3000/${p.image}`} thumbnail className="thumbnail"/>
+                        return <Col lg={3} md={2} className='hover-zoomin'>
+                        <a href="#" title=""></a>
+                                <Image src={`http://localhost:3000/${p.image}`} rounded className="thumbnail"/>
                                 {/* <p>{`${p.topic_id}`}</p> */}
                             </Col>
                         })}
