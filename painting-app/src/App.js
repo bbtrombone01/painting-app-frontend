@@ -55,6 +55,14 @@ deleteUser = () => {
       })
 }
 
+logout = () => {
+  alert("You've successfully logged out!")
+  sessionStorage.clear() 
+  this.setState({
+    logout: true 
+  })
+}
+
 // if you're using sessionStorage as a conditional in the render, have to set it before setting state to get it to be truthy and re render after state updates.
 handleUserSession = (user) => {
   sessionStorage.setItem('token', user.jwt)
@@ -66,7 +74,7 @@ handleUserSession = (user) => {
   render() {
     return (
     <div className="App">
-     {sessionStorage.getItem('token') !== null ? <SuperContainer deleteUser={this.deleteUser} userData={this.state.userData} /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> }    
+     {sessionStorage.getItem('token') !== null ? <SuperContainer deleteUser={this.deleteUser} logout={this.logout} userData={this.state.userData} /> : <LoginAndRegister handleUserSession={this.handleUserSession} /> }    
     </div>
     )}
   }

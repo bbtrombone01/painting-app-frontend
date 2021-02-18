@@ -70,9 +70,7 @@ export default class SignUpForm extends Component {
                     <label>Tag Line</label>
                     <input onChange={(e) => this.handleChangeTag(e)} type="tag" className="form-control" placeholder="Enter Tag Line" />
                 </div>
-
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-                
+                <button type="submit" className="btn btn-primary btn-block">Sign Up</button><br></br>
             </form>
 
             <button  onClick={this.props.showRegisterForm} className="btn btn-primary btn-block">Already registered?</button>

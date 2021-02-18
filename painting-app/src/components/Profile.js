@@ -64,9 +64,12 @@ export default class Profile extends React.Component {
                 </div>
                 <button type="submit" className="btn btn-primary btn-block">Update Profile</button>
             </form>
-            
             </div> 
-                <button onClick={() => this.props.deleteUser()} className="btn btn-primary btn-block">Delete Account?</button>
+            <div><br></br>
+                <button onClick={() => this.props.deleteUser()} className="btn btn-primary btn-block">Delete Account?</button><br></br>
+                <button onClick={() => this.props.logout()} className="btn btn-primary btn-block">Logout</button>
+            </div>
+               
             </div>
         )
     }
