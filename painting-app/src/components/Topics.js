@@ -33,7 +33,7 @@ export default class Topics extends React.Component {
                     })}
                 </select>
                  
-                <button type="submit" value="Submit">Submit </button>
+                <button type="submit" value="Submit">Let's Draw!</button>
             </form>
         </div>
     }

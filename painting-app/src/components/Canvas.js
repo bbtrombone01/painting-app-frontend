@@ -1,5 +1,6 @@
 import React from 'react'
 import { Painterro } from 'painterro' 
+import {Redirect} from 'react-router'
 
 
  
@@ -32,24 +33,30 @@ export default class Canvas extends React.Component {
 
     })
     this.state = {
-      ptro: PTRO
+      ptro: PTRO,
+      redirect: false
     }
   }
 
   componentWillUnmount() {
     this.props.addNewPainting()
     this.state.ptro.hide()
+    this.setState({ redirect: "/gallery/user" })
+
     
   }
 
 
     render() {
        
+      if (this.state.redirect) {
+        return <Redirect to={this.state.redirect} />
+      }
       this.state.ptro.show()
-        
+      
       return (
         <div id='canvas'>
-              
+              All done! Go check out your painting in your paintings gallery, or alongside all the other paintings in the main gallery :)
            
         </div>
       )

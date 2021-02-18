@@ -12,7 +12,9 @@ export default class RightDynamicPane extends React.Component{
    state = {
        allTopics: [],
        allPaintings: [],
-       yourPaintings: []
+       selectedPaintings: [],
+       yourPaintings: [],
+       yourSelectedPaintings: []
    }
 
 
@@ -47,7 +49,9 @@ export default class RightDynamicPane extends React.Component{
           let userPaintings = paintings.filter(p => p.user_id == this.props.userData.id)
           this.setState({
           allPaintings: paintings,
-          yourPaintings: userPaintings
+          selectedPaintings: paintings,
+          yourPaintings: userPaintings,
+          yourSelectedPaintings: userPaintings
         })
       }
       )
@@ -55,6 +59,34 @@ export default class RightDynamicPane extends React.Component{
       
       addNewPainting = () => {
         this.fetchPaintings()
+      }
+
+      filterPaintings =(topicID, topicSelected) => {
+        if (topicSelected) {
+          let paintings = this.state.allPaintings.filter(p => p.topic_id === topicID)
+          this.setState({
+           selectedPaintings: paintings
+          }) 
+        } else {
+          this.setState({
+            selectedPaintings: this.state.allPaintings
+          })
+
+        }
+      }
+
+      filterUserPaintings = (topicID, topicSelected) => {
+        if (topicSelected) {
+          let paintings = this.state.yourPaintings.filter(p => p.topic_id === topicID)
+          this.setState({
+           yourSelectedPaintings: paintings
+          }) 
+        } else {
+          this.setState({
+            yourSelectedPaintings: this.state.yourPaintings
+          })
+
+        }
       }
 
     render(){
@@ -68,11 +100,11 @@ export default class RightDynamicPane extends React.Component{
             return <Topics userData={this.props.userData} allTopics={this.state.allTopics} addNewPainting={this.addNewPainting}/>}
         }/>
          <Route exact path="/gallery/all" render={() => {
-            return <Gallery userData={this.props.userData} allPaintings={this.state.allPaintings} allTopics={this.state.allTopics}/>}
+            return <Gallery userData={this.props.userData} paintings={this.state.selectedPaintings} allTopics={this.state.allTopics} filterPaintings={this.filterPaintings}/>}
         }/>
 
         <Route exact path="/gallery/user" render={() => {
-            return <YourPaintings yourPaintings={this.state.yourPaintings} allTopics={this.state.allTopics}/>}
+            return <YourPaintings paintings={this.state.yourSelectedPaintings} allTopics={this.state.allTopics} filterUserPaintings={this.filterUserPaintings}/>}
         }/>
       </div>
     );
