@@ -72,12 +72,12 @@ export default class RightDynamicPane extends React.Component{
         <Route exact path="/paintings/new" render={() => {
             return <Topics userData={this.props.userData} allTopics={this.state.allTopics} addNewPainting={this.addNewPainting}/>}
         }/>
-         <Route exact path="/gallery" render={() => {
-            return <Gallery userData={this.props.userData} allPaintings={this.state.allPaintings}/>}
+         <Route exact path="/gallery/all" render={() => {
+            return <Gallery userData={this.props.userData} allPaintings={this.state.allPaintings} allTopics={this.state.allTopics}/>}
         }/>
 
-        <Route exact path="/userpaintings" render={() => {
-            return <YourPaintings yourPaintings={this.state.yourPaintings}/>}
+        <Route exact path="/gallery/user" render={() => {
+            return <YourPaintings yourPaintings={this.state.yourPaintings} allTopics={this.state.allTopics}/>}
         }/>
 
       </div>

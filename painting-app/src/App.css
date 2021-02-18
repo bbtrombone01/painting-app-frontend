@@ -102,7 +102,7 @@
 .thumbnail{  
   width: 200px !important;
   height: 200px !important;
-  margin-bottom: 20px !important;
+  margin-bottom: 0px !important;
   margin-top: 20px !important;
 }
 
@@ -127,4 +127,11 @@
   -o-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
+}
+
+.caption{
+  text-align: left;
+  margin-left: 25px;
+  font-style: italic;
+  font-size: small;
 }

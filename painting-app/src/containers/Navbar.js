@@ -14,10 +14,10 @@ export default class Navbar extends React.Component {
                 <Link to='/profile' className='ui-button'>
                     Profile
                 </Link>
-                <Link to='/gallery' className='ui-button'>
+                <Link to='/gallery/all' className='ui-button'>
                 All Paintings Gallery
                 </Link>
-                <Link to='/userpaintings' className='ui-button'>
+                <Link to='/gallery/user' className='ui-button'>
                 Your Paintings
                 </Link>
                 <Link to='/about' className='ui-button'>

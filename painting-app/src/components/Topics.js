@@ -20,8 +20,12 @@ export default class Topics extends React.Component {
 
     renderForm = () => {
         
-        return <form onSubmit={(e) => this.handleSubmit(e)}>
-                <label for="topics">Choose a Topic for Your Painting!</label><br></br>
+        return <div className='form' id='topics-form'>
+            <h2>How Are You Feeling Today?</h2>
+            <br></br>
+            <br></br>
+        <form onSubmit={(e) => this.handleSubmit(e)}>
+                <label for="topics">I'm Feeling...</label><br></br>
                 <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
                     <option value='blank'></option>
                     {this.props.allTopics.map(t => {
@@ -31,6 +35,7 @@ export default class Topics extends React.Component {
                  
                 <button type="submit" value="Submit">Submit </button>
             </form>
+        </div>
     }
 
     renderCanvas = () => {

@@ -12,15 +12,22 @@ export default class Gallery extends React.Component {
 //do styling with the topic in italics
     
     render(){
-        console.log(this.props.allPaintings.length)
+        const allTopics = this.props.allTopics
+        let topicsKey = {}
+        allTopics.forEach(t => {
+            topicsKey[t.id] = t.topic
+        })
+        console.log(topicsKey)
+
         return(
             <Container fluid>
+                <h2>Gallery - All Paintings </h2>
                 <Row>
                     {this.props.allPaintings.map(p => {
                         return <Col lg={3} md={2} className='hover-zoomin'>
                                 <a href="#" title=""></a>
                                 <Image src={`http://localhost:3000/${p.image}`} thumbnail className="thumbnail"/>
-                                {/* <p>{`${p.topic_id}`}</p> */}
+                                <p className='caption'>{`${topicsKey[p.topic_id]}`}</p>
                             </Col>
                         })}
                 </Row>
