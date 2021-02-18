@@ -48,11 +48,11 @@ export default class Profile extends React.Component {
     render() {
         
         return(
-            <div>
+            <div className="profile-container">
                 
-            <h2>This is your profile</h2>
+            <h2>This is your profile</h2><br></br>
             <div>
-            <form onSubmit={(e) => this.updateUser(e)}>
+            <form className="profile-form" onSubmit={(e) => this.updateUser(e)}>
                 <div className="form-group">
                     <label>Username</label>
                     <input onChange={(e) => this.handleChangeUsername(e)} type="text" className="form-control" defaultValue={this.props.userData.username} />
@@ -62,13 +62,11 @@ export default class Profile extends React.Component {
                     <label>Tag Line</label>
                     <input onChange={(e) => this.handleChangeTagline(e)} type="tag" className="form-control" defaultValue={this.props.userData.tagline} />
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">Update Profile</button>
-            </form>
-            </div> 
-            <div><br></br>
+                <button type="submit" className="btn btn-primary btn-block">Update Profile</button><br></br>
                 <button onClick={() => this.props.deleteUser()} className="btn btn-primary btn-block">Delete Account?</button><br></br>
                 <button onClick={() => this.props.logout()} className="btn btn-primary btn-block">Logout</button>
-            </div>
+            </form>
+            </div> 
                
             </div>
         )

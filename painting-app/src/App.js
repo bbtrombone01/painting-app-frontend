@@ -1,4 +1,5 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import Canvas from './components/Canvas.js'
 import SuperContainer from './containers/SuperContainer.js'

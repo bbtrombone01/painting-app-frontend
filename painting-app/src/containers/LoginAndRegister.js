@@ -21,7 +21,7 @@ export default class LoginAndRegister extends React.Component {
         return(
             <div>
                 <div>
-                    <h1>Welcome to our App!</h1>
+                    <h1>Welcome to Draw It Out!</h1>
                 </div>
             {this.state.toggle === false ? <Login showRegisterForm={this.showRegisterForm} handleUserSession={this.props.handleUserSession} /> : <SignUpForm showRegisterForm={this.showRegisterForm} handleUserSession={this.props.handleUserSession}/> }
             </div> 
