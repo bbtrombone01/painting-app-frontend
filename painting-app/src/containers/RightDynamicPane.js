@@ -5,8 +5,10 @@ import Profile from '../components/Profile.js'
 import Topics from '../components/Topics.js'
 import Gallery from '../components/Gallery.js'
 import YourPaintings from '../components/YourPaintings.js'
+import About from '../components/About.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {Route} from 'react-router-dom'
+
 
 export default class RightDynamicPane extends React.Component{
    state = {
@@ -93,6 +95,9 @@ export default class RightDynamicPane extends React.Component{
       console.log(this.state.allPaintings.filter(p => p.user_id == this.props.userData.id))
       return (
       <div  id="right-pane" className="right-dynamic-pane">
+
+        <Route exact path="/about" component={About} />
+
         <Route exact path="/profile" render={() => {
           return <Profile userData={this.props.userData} logout={this.props.logout} deleteUser={this.props.deleteUser} /> 
         }} />
@@ -106,6 +111,7 @@ export default class RightDynamicPane extends React.Component{
         <Route exact path="/gallery/user" render={() => {
             return <YourPaintings paintings={this.state.yourSelectedPaintings} allTopics={this.state.allTopics} filterUserPaintings={this.filterUserPaintings}/>}
         }/>
+
       </div>
     );
     }
