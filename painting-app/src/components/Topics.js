@@ -31,7 +31,7 @@ export default class Topics extends React.Component {
                     return <option value={`${t.id}`}>{t.topic}</option>
                     })}
                 </select>
-                <button type="submit" value="Submit">Submit </button>
+                <button className='btn-submit' type="submit" value="Submit">Submit </button>
             </form>
         </div>
     }
@@ -63,7 +63,3 @@ export default class Topics extends React.Component {
     }
 }
 
-
-//dropdown list with topics
-//will need fetch request to get topics
-//will then need to pass down as props
