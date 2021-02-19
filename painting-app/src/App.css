@@ -201,16 +201,19 @@ button {
 }
 
 .gallery-submit{
+  font-size: 16px !important;
   width: 15% !important;
   margin-top: -7.75% !important;
 }
 
 .gallery-all {
+  font-size: 16px !important;
   width: 15% !important;
-  margin-top: -3% !important;
+  margin-top: -4% !important;
 }
 
 .gallery-topic {
+  height: calc(1.48em + .70rem + 2px);
   width: 15% !important;
   margin-left:69% !important;
 }
