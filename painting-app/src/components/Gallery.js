@@ -42,19 +42,18 @@ export default class Gallery extends React.Component {
                         <h2>Gallery - All Paintings </h2>
                     </Col>
                 <div className="col-md-12 text-right">
-                        <form onSubmit={(e) => this.handleSubmit(e)}>
+                        <form className="filter-form" onSubmit={(e) => this.handleSubmit(e)}>
                             <label for="topics-filter">See paintings by users feeling...</label><br></br>
-                            <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
+                            <select onChange={(e) => this.handleChange(e)} className="gallery-topic" id="topic">
                                 <option value='blank'></option>
                                 {this.props.allTopics.map(t => {
                                     return <option value={`${t.id}`}>{t.topic}</option>
                                     })
                                 }
                             </select>
-                 
-                            <button type="submit" value="Submit">Filter</button>
+                            <button className="gallery-submit" type="submit" value="Submit">Filter</button>                           
                         </form>
-                        <button onClick={(e) => this.handleClick(e)}>see all paintings</button>
+                        <button className="gallery-all" onClick={(e) => this.handleClick(e)}>see all paintings</button>
                 </div>
 
                 </Row>

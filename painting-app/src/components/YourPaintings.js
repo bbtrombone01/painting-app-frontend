@@ -44,7 +44,7 @@ export default class YourPaintings extends React.Component {
                 <div className="col-md-12 text-right">
                         <form onSubmit={(e) => this.handleSubmit(e)}>
                             <label for="topics-filter">Sort your paintings by feeling...</label><br></br>
-                            <select onChange={(e) => this.handleChange(e)} name="topics" id="topics">
+                            <select onChange={(e) => this.handleChange(e)} className="gallery-topic" id="topics">
                                 <option value='blank'></option>
                                 {this.props.allTopics.map(t => {
                                     return <option value={`${t.id}`}>{t.topic}</option>
@@ -52,9 +52,9 @@ export default class YourPaintings extends React.Component {
                                 }
                             </select>
                  
-                            <button type="submit" value="Submit">Filter</button>
+                            <button className="gallery-submit" type="submit" value="Submit">Filter</button>
                         </form>
-                        <button onClick={(e) => this.handleClick(e)}>see all paintings</button>
+                        <button className="gallery-all" onClick={(e) => this.handleClick(e)}>see all paintings</button>
                 </div>
 
                 </Row>

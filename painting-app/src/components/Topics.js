@@ -30,7 +30,7 @@ export default class Topics extends React.Component {
                     {this.props.allTopics.map(t => {
                     return <option value={`${t.id}`}>{t.topic}</option>
                     })}
-                </select><br></br>
+                </select>
                 <button type="submit" value="Submit">Submit </button>
             </form>
         </div>
