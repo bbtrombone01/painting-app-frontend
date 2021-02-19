@@ -54,7 +54,7 @@ export default class Gallery extends React.Component {
                  
                             <button type="submit" value="Submit">Filter</button>
                         </form>
-                        <button onClick={(e) => this.handleClick(e)}>see all paintings</button>
+                        <button onClick={(e) => this.handleClick(e)}>See all paintings</button>
                 </div>
 
                 </Row>
