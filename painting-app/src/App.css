@@ -196,8 +196,8 @@ button {
   vertical-align: middle;
   width:40%;
   color: #fff;
-  background-color: #0f8a8a;
-  border-color: #0f8a8a;
+  background-color: #0f8a8a !important;
+  border-color: #0f8a8a !important;
 }
 
 .gallery-submit{
