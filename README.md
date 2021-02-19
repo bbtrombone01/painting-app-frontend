@@ -2,7 +2,7 @@
 
 # README
 
-# Food and Drink Website Application
+# Draw It Out
 
 # Goal: 
     The goal of our application is to allow Users the ability to create personal canvasses and associated a topic with it. Everyone has a subjective interpretation of defined moods or emotions, and this app gives them the creative freedom to draw out how they are feeling. Create a log or journal entry of drawings that you may revisit, or simply use this application as a standalone canvas. The choice is yours!
